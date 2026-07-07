@@ -1,123 +1,157 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X, Phone, HardHat } from 'lucide-react'
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X, Phone, HardHat } from "lucide-react";
+import {
+  Building2,
+  Wrench,
+  ClipboardList,
+  Home as HomeIcon,
+  TrendingUp,
+  Mail,
+  MapPin,
+  ArrowRight,
+  Shield,
+  Award,
+  Zap,
+  Clock,
+  Star,
+  ChevronRight,
+  Send,
+  Layers,
+  Calendar,
+} from "lucide-react";
 
-const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Process', href: '#process' },
-  { label: 'News', href: '#news' },
-  { label: 'Contact', href: '#contact' },
-]
+const NAV_LINKS = ["About", "Services", "Projects", "Team", "News", "Contact"];
+const SERVICES = [
+  {
+    Icon: HomeIcon,
+    title: "Residential Construction",
+    desc: "Luxury homes, gated estates, and residential towers built to international comfort and safety standards.",
+  },
+  {
+    Icon: Building2,
+    title: "Commercial Construction",
+    desc: "Corporate HQs, shopping complexes, and high-rise developments that redefine Nigerian skylines.",
+  },
+  {
+    Icon: Layers,
+    title: "Civil Engineering",
+    desc: "Roads, bridges, dams, and large-scale infrastructure connecting communities and powering growth.",
+  },
+  {
+    Icon: Wrench,
+    title: "Renovation & Retrofit",
+    desc: "Comprehensive refurbishment services breathing new life into existing structures with minimal disruption.",
+  },
+  {
+    Icon: ClipboardList,
+    title: "Project Management",
+    desc: "End-to-end supervision with rigorous timeline control, budget discipline, and quality assurance.",
+  },
+  {
+    Icon: TrendingUp,
+    title: "Property Development",
+    desc: "Strategic land acquisition, master planning, and profitable real estate development across key cities.",
+  },
+];
 
-export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+export default function NavBar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-primary/90 backdrop-blur-md shadow-lg shadow-primary/10'
-          : 'bg-transparent'
+          ? "bg-primary shadow-2xl shadow-primary/30 py-3"
+          : "bg-transparent py-6"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href="#top" className="flex items-center gap-2.5">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-secondary-foreground">
-            <HardHat className="h-5 w-5" />
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-serif text-lg text-primary-foreground">Greylink</span>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-accent">
-              Construction
-            </span>
-          </span>
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-3 group">
+          <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center shadow-md">
+            <Building2 className="w-5 h-5 text-white" strokeWidth={2} />
+          </div>
+          <div className="leading-none">
+            <div className="font-display text-xl text-white">Izyprecs</div>
+            <div className="text-accent text-[9px] uppercase tracking-[0.22em]">
+              Engineering Excellence
+            </div>
+          </div>
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
-          {links.map((l) => (
-            <li key={l.href}>
+        {/* Desktop links */}
+        <ul className="hidden lg:flex items-center gap-8">
+          {NAV_LINKS.map((link) => (
+            <li key={link}>
               <a
-                href={l.href}
-                className="text-sm font-medium text-primary-foreground/80 transition-colors hover:text-secondary"
+                href={`#${link.toLowerCase()}`}
+                className="text-white/75 hover:text-accent text-sm font-medium tracking-wide transition-colors duration-200"
               >
-                {l.label}
+                {link}
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <a
-            href="tel:+2340000000000"
-            className="flex items-center gap-2 text-sm font-medium text-primary-foreground/80 transition-colors hover:text-secondary"
-          >
-            <Phone className="h-4 w-4" />
-            +234 000 000 0000
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full bg-secondary px-5 py-2.5 text-sm font-semibold text-secondary-foreground shadow-lg shadow-secondary/25 transition-transform hover:-translate-y-0.5"
-          >
-            Get a Quote
-          </a>
-        </div>
-
-        <button
-          type="button"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-primary-foreground lg:hidden"
+        {/* Desktop CTA */}
+        <a
+          href="#contact"
+          className="hidden lg:inline-flex items-center gap-2 bg-accent text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-accent/85 transition-all duration-200 hover:shadow-lg hover:shadow-accent/30"
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          Request Consultation
+          <ArrowRight className="w-3.5 h-3.5" />
+        </a>
+
+        {/* Mobile toggle */}
+        <button
+          className="lg:hidden text-white p-1.5"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle navigation"
+        >
+          {mobileOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden bg-primary lg:hidden"
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="lg:hidden bg-primary/98 backdrop-blur-md px-6 pb-8 pt-3 border-t border-white/10"
+        >
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="block text-white/80 hover:text-accent py-3.5 border-b border-white/8 text-sm font-medium transition-colors"
+              onClick={() => setMobileOpen(false)}
+            >
+              {link}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="mt-5 block text-center bg-accent text-white text-sm font-semibold px-5 py-3.5 rounded-full hover:bg-accent/85 transition-colors"
+            onClick={() => setMobileOpen(false)}
           >
-            <ul className="flex flex-col gap-1 px-5 pb-6 pt-2">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-base font-medium text-primary-foreground/90 transition-colors hover:bg-white/5 hover:text-secondary"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-              <li className="mt-2">
-                <a
-                  href="#contact"
-                  onClick={() => setOpen(false)}
-                  className="block rounded-full bg-secondary px-5 py-3 text-center text-sm font-semibold text-secondary-foreground"
-                >
-                  Get a Quote
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Request Consultation
+          </a>
+        </motion.div>
+      )}
     </header>
-  )
+  );
 }

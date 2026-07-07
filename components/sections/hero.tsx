@@ -1,8 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, Building2 } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+
+import { AnimatePresence } from "framer-motion";
+import {
+  motion,
+  fadeUp,
+  staggerContainer,
+  FadeIn,
+  SectionHeading,
+  SectionPill,
+  GoldRule,
+  Counter,
+} from "@/components/motion/motion";
+import { Menu, X, Phone, HardHat } from "lucide-react";
+import {
+  Building2,
+  Wrench,
+  ClipboardList,
+  Home as HomeIcon,
+  TrendingUp,
+  Mail,
+  MapPin,
+  ArrowRight,
+  Shield,
+  Award,
+  Zap,
+  Clock,
+  Star,
+  ChevronRight,
+  Send,
+  Layers,
+  Calendar,
+} from "lucide-react";
 
 const stats = [
   { value: "20+", label: "Years Experience" },
@@ -11,125 +42,127 @@ const stats = [
   { value: "95%", label: "Client Satisfaction" },
 ];
 
-export function Hero() {
+export default function Hero() {
   return (
-    <section
-      id="top"
-      className="relative flex min-h-screen items-center overflow-hidden"
-    >
-      {/* Background */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/hero-construction.png"
-          alt="Greylink construction site at dusk with tower cranes"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-primary/75" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
-      </div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-primary">
+      {/* Background image with overlay */}
+      <img
+        src="https://images.unsplash.com/photo-1776333089634-8caadaa98359?w=1920&h=1080&fit=crop&auto=format"
+        alt="Construction cranes over a modern city skyline"
+        className="absolute inset-0 w-full h-full object-cover opacity-35"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-transparent" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-5 pb-16 pt-32 lg:grid-cols-12 lg:px-8 lg:pt-28">
-        {/* Left copy */}
-        <div className="lg:col-span-7">
-          <motion.span
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24 w-full">
+        <div className="max-w-3xl">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-accent backdrop-blur-sm"
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Building2 className="h-3.5 w-3.5" />
-            Trusted since 2004
-          </motion.span>
+            <span className="inline-flex items-center gap-2 bg-accent/15 border border-accent/35 text-accent text-[11px] font-semibold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-7">
+              <HardHat className="w-3.5 h-3.5" />
+              Nigeria's Premier Engineering Firm
+            </span>
+          </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-6 font-serif text-4xl leading-[1.05] text-primary-foreground text-balance sm:text-5xl lg:text-6xl xl:text-7xl"
+            transition={{ duration: 0.8, delay: 0.35 }}
+            className="font-display text-5xl md:text-6xl lg:text-[4.5rem] text-white leading-[1.05] mb-7"
           >
-            Building Nigeria&apos;s Future with Engineering Excellence
+            Building Nigeria's Future
+            <br />
+            with <span className="text-accent italic">Engineering</span>{" "}
+            Excellence
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/75 sm:text-lg"
+            transition={{ duration: 0.7, delay: 0.52 }}
+            className="text-white/65 text-lg md:text-xl leading-relaxed max-w-2xl mb-11"
           >
-            Greylink Construction delivers landmark commercial, industrial and
-            civil projects across Nigeria. combining world-class engineering,
-            uncompromising safety and on-time delivery.
+            For over two decades, Izyprecs has delivered landmark
+            infrastructure, commercial developments, and residential estates
+            across 15 states engineering the nation's tomorrow, one project at a
+            time.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-9 flex flex-wrap items-center gap-4"
+            transition={{ duration: 0.65, delay: 0.68 }}
+            className="flex flex-wrap gap-4"
           >
             <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3.5 text-sm font-semibold text-secondary-foreground shadow-xl shadow-secondary/30 transition-transform hover:-translate-y-0.5"
+              href="#projects"
+              className="inline-flex items-center gap-2.5 bg-accent text-white font-semibold px-8 py-4 rounded-full hover:bg-accent/85 transition-all duration-300 hover:shadow-xl hover:shadow-accent/35 hover:-translate-y-0.5 text-sm"
             >
-              Get a Quote
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              View Our Projects
+              <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-primary-foreground backdrop-blur-sm transition-colors hover:bg-white/10"
+              href="#contact"
+              className="inline-flex items-center gap-2.5 border-2 border-white/35 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 hover:border-white/65 transition-all duration-300 hover:-translate-y-0.5 text-sm"
             >
-              View Projects
+              Request Consultation
             </a>
           </motion.div>
         </div>
 
-        {/* Floating stats */}
-        <div className="lg:col-span-5">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-md"
-              >
-                <div className="font-serif text-3xl text-primary-foreground sm:text-4xl">
-                  {s.value}
-                </div>
-                <div className="mt-1 text-sm text-primary-foreground/70">
-                  {s.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        {/* Floating stat cards */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="hidden xl:flex absolute right-6 top-1/2 -translate-y-1/2 flex-col gap-4"
+        >
+          {[
+            { val: "20+", label: "Years" },
+            { val: "300+", label: "Projects" },
+            { val: "15", label: "States" },
+          ].map(({ val, label }) => (
+            <div
+              key={label}
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-7 py-5 text-center"
+            >
+              <div className="font-display text-3xl text-accent leading-none">
+                {val}
+              </div>
+              <div className="text-white/60 text-xs mt-1 uppercase tracking-widest">
+                {label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.a
-        href="#trusted"
-        aria-label="Scroll down"
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-primary-foreground/60 md:flex"
+        transition={{ delay: 1.4 }}
       >
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <motion.span
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.6 }}
-        >
-          <ChevronDown className="h-5 w-5" />
-        </motion.span>
-      </motion.a>
+        <span className="text-white/40 text-[10px] uppercase tracking-[0.25em]">
+          Scroll
+        </span>
+        <motion.div
+          className="w-px h-10 bg-gradient-to-b from-white/50 to-transparent"
+          animate={{ scaleY: [0, 1, 0] }}
+          transition={{
+            duration: 1.6,
+            repeat: Infinity,
+            repeatDelay: 0.4,
+            ease: "easeInOut",
+          }}
+          style={{ originY: 0 }}
+        />
+      </motion.div>
     </section>
   );
 }
