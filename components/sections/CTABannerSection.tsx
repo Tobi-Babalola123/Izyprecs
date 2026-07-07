@@ -51,9 +51,9 @@ export default function CTABannerSection() {
             <span className="text-accent italic">Extraordinary</span> Together
           </h2>
           <p className="text-white/60 text-lg mb-11 max-w-2xl mx-auto leading-relaxed">
-            Whether you have a fully formed brief or just the seed of an idea,
+            Whether you have a fully formed brief, or just the seed of an idea,
             our team of engineers and architects is ready to bring your vision
-            to life on time, on budget, and beyond expectation.
+            to life. on time, on budget, and beyond expectation.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

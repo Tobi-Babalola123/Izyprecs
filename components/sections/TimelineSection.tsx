@@ -54,7 +54,7 @@ const TIMELINE_STEPS = [
   {
     num: "05",
     title: "Delivery",
-    desc: "Client walkthrough, full handover documentation, defects liability, and aftercare.",
+    desc: "Client walkthrough, full handover documentation, defects liability, and aftercare...",
   },
 ];
 
