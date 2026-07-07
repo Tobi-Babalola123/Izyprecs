@@ -39,7 +39,7 @@ const TEAM = [
   },
   {
     name: "Onuegbu Nwabueze",
-    role: "Procurement Manager - B.Sc ECONOMICS), LASU",
+    role: "Procurement Manager - (B.Sc ECONOMICS), LASU",
     img: "/images/onuegbu.png",
   },
   {
@@ -70,7 +70,7 @@ const TEAM = [
   {
     name: "Chukwunyerem Ogbonnaya",
     role: "Director",
-    img: "/images/Chukwunyerem.png",
+    img: "/images/chukwunyerem.png",
   },
   {
     name: "Arc.Ufomba-Amaije Henry Obinna",

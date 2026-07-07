@@ -44,12 +44,12 @@ const TIMELINE_STEPS = [
   {
     num: "03",
     title: "Construction",
-    desc: "Ground-breaking through structural completion with daily live reporting dashboards.",
+    desc: "Ground-breaking through structural completion with daily live reporting dashboards...",
   },
   {
     num: "04",
     title: "Inspection",
-    desc: "Rigorous QA/QC checks, regulatory compliance reviews, and third-party safety audits.",
+    desc: "Rigorous QA/QC checks, regulatory compliance reviews, and third-party safety audits..",
   },
   {
     num: "05",
